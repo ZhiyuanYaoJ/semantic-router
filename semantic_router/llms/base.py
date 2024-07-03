@@ -85,6 +85,9 @@ class BaseLLM(BaseModel):
                     name, _ = name_type_pair.split(":")
                 else:
                     name = name_type_pair
+                if name.startswith("*"):
+                    # skip *args and **kwargs
+                    continue
                 all_params.append(name)
 
                 # If there is no default value, it's a mandatory parameter
